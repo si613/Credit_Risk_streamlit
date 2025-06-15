@@ -31,7 +31,7 @@ model, encoders = load_model_and_encoders()
 st.markdown("""
     <style>
     .stApp {
-        background-color: #f0f8ff;
+        background-color: #ae66e8;
         color: white;
     }
     .stButton>button {
@@ -92,7 +92,7 @@ if submit:
     # Output
     st.header("📊 Prediction Result")
 
-    if prob > 0.5:
+    if prob > 0.05:
         st.error(f"⚠️ High Risk of Default (Probability: {prob:.2f})")
     else:
         st.success(f"✅ Low Risk of Default (Probability: {prob:.2f})")
