@@ -98,18 +98,3 @@ It combines **machine learning** with a user-friendly **web interface** to make 
 
 ---
 
-## 📜 License
-
-This project is for educational and demonstrative purposes only.  
-Please fork and cite appropriately.
-
----
-
-## ✅ Next Steps
-
-- Add screenshots of the Streamlit UI in the repo (optional)
-- Replace `your-username` in clone URL with your actual GitHub handle
-- Share the deployed app link publicly or with teammates
-- Extend the model or UI with new features like income bands, charts, etc.
-
----
