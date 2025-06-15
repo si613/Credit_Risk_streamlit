@@ -30,7 +30,10 @@ model, encoders = load_model_and_encoders()
 # UI Design
 st.markdown("""
     <style>
-    .main { background-color: #f0f8ff; }
+    .stApp {
+        background-color: #001f3f; /* Very dark blue */
+        color: white;
+    }
     .stButton>button {
         background-color: #1f77b4;
         color: white;
@@ -40,6 +43,7 @@ st.markdown("""
     }
     </style>
 """, unsafe_allow_html=True)
+
 
 st.title("💳 Credit Risk Prediction & Customer Scoring")
 st.markdown("Enter your details to calculate **credit default risk** and generate a **custom credit score** based on industry logic.")
