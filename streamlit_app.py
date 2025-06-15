@@ -1,8 +1,11 @@
 # streamlit_app.py
-
 import streamlit as st
+
+st.set_page_config(page_title="Credit Risk & Scoring System", layout="centered")
+
 import pandas as pd
 import numpy as np
+import pickle
 import os
 
 from xgboost import XGBClassifier
@@ -10,8 +13,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import roc_auc_score
 
+
 # Load and preprocess data
-import pickle
 
 @st.cache_resource
 def load_model_and_encoders():
