@@ -28,7 +28,6 @@ model, encoders = load_model_and_encoders()
 
 
 # UI Design
-st.set_page_config(page_title="Credit Risk & Scoring System", layout="centered")
 st.markdown("""
     <style>
     .main { background-color: #f0f8ff; }
