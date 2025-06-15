@@ -3,7 +3,6 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import joblib
 import os
 
 from xgboost import XGBClassifier
@@ -12,29 +11,18 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import roc_auc_score
 
 # Load and preprocess data
-@st.cache_data
-def load_and_train_model():
-    df = pd.read_csv('credit_risk_dataset.csv')
+import pickle
 
-    # Encode categorical features
-    cat_cols = ['person_home_ownership', 'loan_intent', 'loan_grade', 'cb_person_default_on_file']
-    encoders = {}
-    for col in cat_cols:
-        le = LabelEncoder()
-        df[col] = le.fit_transform(df[col])
-        encoders[col] = le
-
-    # Prepare features and target
-    X = df.drop(columns=['loan_status'])
-    y = df['loan_status']
-
-    # Train model
-    model = XGBClassifier(use_label_encoder=False, eval_metric='logloss')
-    model.fit(X, y)
-
+@st.cache_resource
+def load_model_and_encoders():
+    with open("xgb_model.pkl", "rb") as f:
+        model = pickle.load(f)
+    with open("encoders.pkl", "rb") as f:
+        encoders = pickle.load(f)
     return model, encoders
 
-model, encoders = load_and_train_model()
+model, encoders = load_model_and_encoders()
+
 
 # UI Design
 st.set_page_config(page_title="Credit Risk & Scoring System", layout="centered")
