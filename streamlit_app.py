@@ -31,7 +31,7 @@ model, encoders = load_model_and_encoders()
 st.markdown("""
     <style>
     .stApp {
-        background-color: #001f3f; /* Very dark blue */
+        background-color: #f0f8ff;
         color: white;
     }
     .stButton>button {
@@ -58,7 +58,7 @@ with st.form("input_form"):
     emp_length = st.slider("Years of Employment", 0, 40, 5)
     loan_intent = st.selectbox("Loan Purpose", ["DEBTCONSOLIDATION", "EDUCATION", "HOMEIMPROVEMENT", "MEDICAL", "PERSONAL", "VENTURE"])
     loan_grade = st.selectbox("Loan Grade", list("ABCDEFG"))
-    loan_amnt = st.number_input("Loan Amount", 500, 50000, 10000, step=500)
+    loan_amnt = st.number_input("Loan Amount", min_value=500, value=10000, step=500)
     loan_int_rate = st.slider("Interest Rate (%)", 0.0, 40.0, 10.0)
     loan_percent_income = loan_amnt / income
     default_on_file = st.selectbox("Any Previous Default on File?", ["Y", "N"])
