@@ -31,7 +31,7 @@ model, encoders = load_model_and_encoders()
 st.markdown("""
     <style>
     .stApp {
-        background-color: #000000;
+        background-color: #010129;
         color: white;
     }
     .stButton>button {
