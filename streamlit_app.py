@@ -46,7 +46,7 @@ st.markdown("""
 
 
 st.title("💳 Credit Risk Prediction & Customer Scoring")
-st.markdown("Enter your details to calculate **credit default risk** and generate a **custom credit score** based on industry logic.")
+st.markdown("Enter your details to calculate **credit default risk** and generate a **custom credit score**.")
 
 st.header("📋 User Input")
 
