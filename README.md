@@ -5,6 +5,19 @@ Built using a pre-trained **XGBoost** model selected after benchmarking multiple
 
 ---
 
+# 🚀 Try the Credit Risk Prediction App
+
+👉 **[Click here to open the app](https://creditriskapp-t9vwc9f5tfdtrfsnivakwu.streamlit.app/#credit-risk-prediction-customer-scoring)**
+
+This Streamlit-powered app allows you to:
+- Predict the risk of credit default
+- Generate a personalized credit score
+- Explore the financial health of a hypothetical applicant
+
+No installation needed — just open the link above and try it out!
+
+---
+
 ## 🎯 Purpose
 
 This project serves as a **credit risk and scoring calculator** that provides instant insights into:
@@ -53,6 +66,7 @@ It combines **machine learning** with a user-friendly **web interface** to make 
 
 > **Note**: Make sure your repo includes `xgb_model.pkl`, `encoders.pkl`, and `requirements.txt` so the app can run without retraining.
 
+
 ---
 
 ## 🧠 Model & Dataset Info
@@ -70,13 +84,17 @@ It combines **machine learning** with a user-friendly **web interface** to make 
 
 ## 🏔️ Challenges Faced
 
-| Challenge | Resolution |
-|----------|------------|
-| **Slow prediction from retraining** | Shifted to using `pickle` to save/load model + encoders, avoiding retraining on every run |
-| **Encoding mismatch** | Stored original `LabelEncoder` objects as `encoders.pkl` for consistent label mapping |
-| **Imbalanced data** | Addressed using `scale_pos_weight` in XGBoost |
-| **Streamlit UI clarity** | Used traffic-light coloring and score ranges to explain predictions |
-| **Deployment packaging** | Ensured all key artifacts fit Streamlit Cloud size limits and function on cold start |
+## 🚧 Challenges & Resolutions
+
+| **Category**            | **Challenge**                                                                 | **Resolution**                                                                 |
+|------------------------|------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
+| 🧠 Model Management     | Serialized model (`xgb_model.pkl`) and encoders (`encoders.pkl`) reuse       | Used `@st.cache_resource` to efficiently load and reuse them                  |
+| 💻 Streamlit Config     | Multiple calls to `st.set_page_config()` caused runtime errors                | Removed duplicate call, retained one at the top of the script                 |
+| ☁️ Streamlit Cloud      | Dependency build failures (e.g., `pillow`, `scikit-learn`) due to versioning | Adjusted `requirements.txt` to include stable, compatible versions            |
+| 📦 Dependency Conflicts | `numpy==2.0.0rc1` not available, caused `scikit-learn` build to fail          | Reverted to `scikit-learn==1.3.2` and compatible `numpy` version              |
+| 🧵 Error Obfuscation    | Streamlit Cloud redacted traceback errors (`StreamlitAPIException`)          | Relied on log tab in "Manage app" to trace actual issue                       |
+
+
 
 ---
 
